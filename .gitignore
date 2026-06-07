@@ -50,8 +50,9 @@ jspm_packages/
 **/uploads/*
 **/dist/
 **/node_modules/
-build_output?.txt
-check-?.js
+**/build_output*
+**/check-*
+**/*.db
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

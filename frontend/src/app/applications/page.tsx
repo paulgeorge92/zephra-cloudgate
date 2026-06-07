@@ -2,11 +2,10 @@
 
 import { useEffect, useState, Suspense } from 'react';
 import AppLayout from '@/components/layout/AppLayout';
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import AddApplicationModal from '@/components/applications/AddApplicationModal';
 import { getApplications, deleteApplication } from '@/lib/api';
 import { Plus, Globe, Lock, ShieldCheck, ExternalLink, Trash2, Layers, AlertTriangle, RefreshCw } from 'lucide-react';
-import { Pagination } from '@/components/ui/Pagination';
 import { Modal } from '@/components/ui/Modal';
 import { Application, Tunnel } from '@/lib/types';
 
@@ -18,10 +17,10 @@ const exposureConfig: Record<string, { label: string; color: string; icon: any; 
 
 function ApplicationsContent() {
   const [apps, setApps] = useState<(Application & { tunnel?: Tunnel })[]>([]);
-  const [pagination, setPagination] = useState<{ total: number; pages: number } | null>(null);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const initialTunnelId = searchParams.get('tunnelId') || undefined;
 
   // Modal state
@@ -29,19 +28,14 @@ function ApplicationsContent() {
   const [appToDelete, setAppToDelete] = useState<{ id: string; name: string } | null>(null);
   const [deleting, setDeleting] = useState(false);
 
-  const fetchApps = async (page = 1) => {
+  const fetchApps = async () => {
     setLoading(true);
     try {
       const res = await getApplications();
       const apps = res.data.result || []
       setApps(apps);
-      if (res.data.result_info?.total_count !== undefined) {
-        setPagination({
-          total: res.data.result_info.total_count,
-          pages: res.data.result_info.total_pages
-        });
-      }
     } catch (error) {
+      console.log(error);
       setApps([]);
     }
     finally {
@@ -56,10 +50,6 @@ function ApplicationsContent() {
     }
   }, [searchParams]);
 
-  const handlePageChange = (page: number) => {
-    fetchApps(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   const handleDeleteClick = (id: string, name: string) => {
     setAppToDelete({ id, name });
@@ -112,7 +102,19 @@ function ApplicationsContent() {
             const cfg = exposureConfig[app.exposureType] || exposureConfig.PUBLIC;
             const Icon = cfg.icon;
             return (
-              <div key={app.id} className="glass-panel p-6 relative group">
+              <div
+                key={app.id}
+                role="button"
+                tabIndex={0}
+                onClick={() => router.push(`/applications/${app.id}`)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    router.push(`/applications/${app.id}`);
+                  }
+                }}
+                className="glass-panel p-6 relative group cursor-pointer hover:border-[#f38020]/30 transition-all"
+              >
                 <div className={`absolute top-3 right-3 flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full border ${cfg.glow} ${cfg.color}`}>
                   <Icon className="w-3 h-3" /> {cfg.label}
                 </div>
@@ -127,8 +129,8 @@ function ApplicationsContent() {
                   )}
                   <div className="min-w-0">
                     <h3 className="font-semibold text-white truncate">{app.name}</h3>
-                    {app.publicUrl && (
-                      <a href={`https://${app.publicUrl}`} target="_blank"
+                    {app.publicUrl && app.publicUrl.length > 0 && (
+                      <a href={`https://${app.publicUrl[0]}`} target="_blank"
                         className="text-xs text-slate-400 hover:text-[#f38020] flex items-center gap-1 mt-0.5 transition-colors truncate">
                         {app.publicUrl} <ExternalLink className="w-3 h-3 shrink-0" />
                       </a>
@@ -149,7 +151,10 @@ function ApplicationsContent() {
 
                 <div className="flex items-center justify-end gap-2 pt-3 border-t border-white/5">
                   <button
-                    onClick={() => handleDeleteClick(app.id, app.name)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleDeleteClick(app.id, app.name);
+                    }}
                     className="text-slate-500 hover:text-red-400 p-2 rounded-lg hover:bg-red-500/10 transition-all">
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -190,7 +195,7 @@ function ApplicationsContent() {
           </div>
           <div>
             <p className="text-white font-semibold text-lg">Are you sure?</p>
-            <p className="text-slate-400 text-sm mt-1">You are about to delete <span className="text-white font-medium">"{appToDelete?.name}"</span>. This will stop external access immediately.</p>
+            <p className="text-slate-400 text-sm mt-1">You are about to delete <span className="text-white font-medium">&quot;{appToDelete?.name}&quot;</span>. This will stop external access immediately.</p>
           </div>
         </div>
       </Modal>

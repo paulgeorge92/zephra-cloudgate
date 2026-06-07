@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { X, Globe, Lock, ShieldCheck, ChevronRight, ChevronLeft, Rocket } from 'lucide-react';
+import { X, Globe, Lock, ShieldCheck, ChevronRight, ChevronLeft, Rocket, Plus, Trash2 } from 'lucide-react';
 import { createApplication, getTunnels, getDomains, getAccessPolicies } from '@/lib/api';
 import {
   Select,
@@ -13,7 +13,7 @@ import {
 
 import { Modal } from '../ui/Modal';
 import { AlertTriangle } from 'lucide-react';
-import { Tunnel, ApplicationPolicy, AccessPolicy, ApplicationExposureTypeEnum } from '@/lib/types';
+import { Tunnel, ApplicationPolicy, AccessPolicy, ApplicationExposureTypeEnum, CreateApplicationData } from '@/lib/types';
 import Link from 'next/link';
 
 const STEPS = ['1. Define App', '2. Exposure & Domain', '3. Policy', '4. Tunnel'];
@@ -22,6 +22,25 @@ interface CfZone {
   id: string;
   name: string;
 }
+
+interface PublicUrlConfig {
+  id: string;
+  subdomain: string;
+  zone: string;
+}
+
+const createEmptyPublicUrlConfig = (): PublicUrlConfig => ({
+  id: crypto.randomUUID(),
+  subdomain: '',
+  zone: '',
+});
+
+const getPublicUrlValue = ({ subdomain, zone }: Pick<PublicUrlConfig, 'subdomain' | 'zone'>) => {
+  const trimmedSubdomain = subdomain.trim().toLowerCase();
+  const trimmedZone = zone.trim().toLowerCase();
+
+  return trimmedSubdomain && trimmedZone ? `${trimmedSubdomain}.${trimmedZone}` : '';
+};
 
 export default function AddApplicationModal({
   onClose,
@@ -46,8 +65,7 @@ export default function AddApplicationModal({
   const [ip, setIp] = useState('');
   const [port, setPort] = useState('');
   const [exposureType, setExposureType] = useState<ApplicationExposureTypeEnum>(ApplicationExposureTypeEnum.PUBLIC);
-  const [subdomain, setSubdomain] = useState('');
-  const [selectedZone, setSelectedZone] = useState<string> ('');
+  const [publicUrlConfigs, setPublicUrlConfigs] = useState<PublicUrlConfig[]>([createEmptyPublicUrlConfig()]);
   const [selectedTunnel, setSelectedTunnel] = useState(initialTunnelId || '');
   const [policyType, setPolicyType] = useState<'OPEN' | 'RESTRICTED'>('OPEN');
   const [selectedPolicy, setSelectedPolicy] = useState<string>('');
@@ -66,7 +84,11 @@ export default function AddApplicationModal({
   }, [initialTunnelId]);
 
   const destinationUrl = destType === 'URI' ? destUri : `${protocol}${ip}:${port}`;
-  const publicUrl = exposureType !== 'WARP' ? `${subdomain}.${selectedZone}` : undefined;
+  const publicUrls = exposureType !== ApplicationExposureTypeEnum.WARP
+    ? publicUrlConfigs.map(getPublicUrlValue).filter(Boolean)
+    : [];
+  const publicUrl = publicUrls[0];
+  const primaryZoneId = zones.find(z => z.name === publicUrlConfigs[0]?.zone)?.id;
 
   async function loadData(): Promise<void> {
     const [tunnelsRes, zonesRes, policiesRes] = await Promise.all([
@@ -94,17 +116,19 @@ export default function AddApplicationModal({
         } : {})
       };
 
-      await createApplication({
+      const applicationData:CreateApplicationData = {
         name,
         logoUrl,
         destinationUrl,
         destinationType: destType,
         exposureType,
-        publicUrl: publicUrl,
+        publicUrl: publicUrls,
         tunnelId: selectedTunnel || undefined,
         policy,
-        zoneId: zones.find(z => z.name === selectedZone)?.id
-      });
+        zoneId: primaryZoneId
+      };
+
+      await createApplication(applicationData);
       onCreated();
     } catch (e: any) {
       setErrorMessage(e?.response?.data?.message || 'Error creating application');
@@ -112,6 +136,20 @@ export default function AddApplicationModal({
     } finally {
       setLoading(false);
     }
+  }
+
+  function updatePublicUrlConfig(id: string, updates: Partial<Omit<PublicUrlConfig, 'id'>>) {
+    setPublicUrlConfigs(configs => configs.map(config => (
+      config.id === id ? { ...config, ...updates } : config
+    )));
+  }
+
+  function addPublicUrlConfig() {
+    setPublicUrlConfigs(configs => [...configs, createEmptyPublicUrlConfig()]);
+  }
+
+  function removePublicUrlConfig(id: string) {
+    setPublicUrlConfigs(configs => configs.length > 1 ? configs.filter(config => config.id !== id) : configs);
   }
 
   function nextStep() {
@@ -125,8 +163,13 @@ export default function AddApplicationModal({
         }
         break;
       case 1:
-        if (exposureType !== ApplicationExposureTypeEnum.WARP && (!subdomain || !selectedZone)) {
+        if (exposureType !== ApplicationExposureTypeEnum.WARP && publicUrlConfigs.some(({ subdomain, zone }) => !subdomain.trim() || !zone)) {
           setErrorMessage('Please fill in all required fields');
+          setErrorModalOpen(true);
+          return;
+        }
+        if (exposureType !== ApplicationExposureTypeEnum.WARP && new Set(publicUrls).size !== publicUrls.length) {
+          setErrorMessage('Duplicate public URLs are not allowed');
           setErrorModalOpen(true);
           return;
         }
@@ -168,7 +211,7 @@ export default function AddApplicationModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-2xl glass-panel overflow-hidden flex flex-col shadow-2xl">
+      <div className="relative w-full max-w-2xl max-h-[90vh] glass-panel overflow-hidden flex flex-col shadow-2xl">
         {/* Header */}
         <div className="p-6 border-b border-white/10 flex justify-between items-center">
           <h2 className="text-xl font-bold text-white">Add Application</h2>
@@ -258,24 +301,51 @@ export default function AddApplicationModal({
 
               {exposureType !== 'WARP' && (
                 <div className="border-t border-white/10 pt-6">
-                  <label className="block text-sm font-medium text-white mb-4">Public URL Configuration</label>
-                  <div className="flex gap-2 items-center">
-                    <input type="text" placeholder="subdomain" value={subdomain} onChange={e => setSubdomain(e.target.value)}
-                      className="input-glass flex-1 text-right" />
-                    <span className="text-slate-400 font-bold text-lg">.</span>
-                    <Select value={selectedZone} onValueChange={(val) =>  val && setSelectedZone(val)}>
-                      <SelectTrigger className="flex-1" placeholder="Select domain..." />
-                      <SelectPortal>
-                        <SelectContent>
-                          {zones.map((z) => (
-                            <SelectItem key={z.id} value={z.name}>{z.name}</SelectItem>
-                          ))}
-                        </SelectContent>
-                      </SelectPortal>
-                    </Select>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <label className="block text-sm font-medium text-white">Public URL Configuration</label>
+                    <button
+                      type="button"
+                      onClick={addPublicUrlConfig}
+                      className="btn-ghost h-9 px-3 text-xs flex items-center gap-2"
+                    >
+                      <Plus className="w-4 h-4" /> Add URL
+                    </button>
+                  </div>
+                  <div className="space-y-3 max-h-56 overflow-y-auto pr-2 custom-scrollbar">
+                    {publicUrlConfigs.map((config, index) => (
+                      <div key={config.id} className="flex gap-2 items-center">
+                        <input
+                          type="text"
+                          placeholder="subdomain"
+                          value={config.subdomain}
+                          onChange={e => updatePublicUrlConfig(config.id, { subdomain: e.target.value })}
+                          className="input-glass flex-1 text-right"
+                        />
+                        <span className="text-slate-400 font-bold text-lg">.</span>
+                        <Select value={config.zone} onValueChange={(val) => val && updatePublicUrlConfig(config.id, { zone: val })}>
+                          <SelectTrigger className="flex-1" placeholder="Select domain..." />
+                          <SelectPortal>
+                            <SelectContent>
+                              {zones.map((z) => (
+                                <SelectItem key={z.id} value={z.name}>{z.name}</SelectItem>
+                              ))}
+                            </SelectContent>
+                          </SelectPortal>
+                        </Select>
+                        <button
+                          type="button"
+                          onClick={() => removePublicUrlConfig(config.id)}
+                          disabled={publicUrlConfigs.length === 1}
+                          title={publicUrlConfigs.length === 1 ? 'At least one URL is required' : `Remove URL ${index + 1}`}
+                          className="h-10 w-10 rounded-lg border border-white/10 bg-white/[0.02] text-slate-400 hover:text-red-300 hover:border-red-400/30 hover:bg-red-500/10 disabled:opacity-40 disabled:hover:text-slate-400 disabled:hover:border-white/10 disabled:hover:bg-white/[0.02] flex items-center justify-center transition-all"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    ))}
                   </div>
                   <p className="text-xs text-slate-500 mt-2 flex items-center gap-1">
-                    💡 A CNAME record will automatically be created for this app
+                    A CNAME record will automatically be created for each URL
                   </p>
                 </div>
               )}

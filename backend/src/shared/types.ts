@@ -128,7 +128,7 @@ export interface SetupVerificationResult {
 export interface CreateApplicationData {
   name: string;
   logoUrl?: string;
-  publicUrl?: string;
+  publicUrl?: string[];
   destinationType: 'URI' | 'IP';
   destinationUrl: string;
   exposureType: ApplicationExposureTypeEnum;

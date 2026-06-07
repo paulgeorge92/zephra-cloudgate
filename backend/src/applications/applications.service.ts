@@ -23,7 +23,7 @@ export class ApplicationsService {
         id: app.id,
         name: app.name,
         logoUrl: app.logoUrl ?? undefined,
-        publicUrl: app.publicUrl ?? undefined,
+        publicUrl: JSON.parse(app.publicUrl || '[]'),
         destinationType: app.destinationType as Application['destinationType'],
         destinationUrl: app.destinationUrl,
         exposureType: app.exposureType as Application['exposureType'],
@@ -42,7 +42,7 @@ export class ApplicationsService {
       id: app.id,
       name: app.name,
       logoUrl: app.logoUrl ?? undefined,
-      publicUrl: app.publicUrl ?? undefined,
+      publicUrl: JSON.parse(app.publicUrl || ''),
       destinationType: app.destinationType as Application['destinationType'],
       destinationUrl: app.destinationUrl,
       exposureType: app.exposureType as Application['exposureType'],
@@ -59,20 +59,25 @@ export class ApplicationsService {
     try {
       // 1. Create DNS Record and Tunnel Configuration for Public and Public with Access Apps
       if (rest.exposureType !== ApplicationExposureTypeEnum.WARP) {
-        //Create a DNS record if tunnelId is provided
-        const dnsRecord = await this.dns.create(rest.zoneId || '', rest.publicUrl || '', tunnelId || '', `DNS record for ${rest.name} Ingress Rule`);
-        dnsRecordId = dnsRecord.result.id;
-
+        let publicUrls = rest.publicUrl as string[];
         let tunnelConfig = await this.cloudflare.getTunnelConfig(tunnelId || '');
-        if (tunnelConfig.result.config.ingress.find((i) => i.hostname === rest.publicUrl)) {
-          console.log('Tunnel config already has the hostname, skipping update');
-        } else {
-          tunnelConfig.result.config.ingress.splice(tunnelConfig.result.config.ingress.length - 1, 0, {
-            hostname: rest.publicUrl || '',
-            service: rest.destinationUrl || ''
-          });
-          await this.cloudflare.updateTunnelConfig(tunnelId || '', tunnelConfig.result.config);
+        for (const publicUrl of publicUrls) {
+          //Create a DNS record if tunnelId is provided
+          const dnsRecord = await this.dns.create(rest.zoneId || '', publicUrl || '', tunnelId || '', `DNS record for ${rest.name} Ingress Rule`);
+          dnsRecordId = dnsRecord.result.id;
+
+         
+          if (tunnelConfig.result.config.ingress.find((i) => i.hostname === rest.publicUrl)) {
+            console.log('Tunnel config already has the hostname, skipping update');
+          } else {
+            tunnelConfig.result.config.ingress.splice(tunnelConfig.result.config.ingress.length - 1, 0, {
+              hostname: publicUrl || '',
+              service: rest.destinationUrl || ''
+            });
+           
+          }
         }
+        await this.cloudflare.updateTunnelConfig(tunnelId || '', tunnelConfig.result.config);
       }
 
       // 2. Create Access App if WARP or Public with Access
@@ -106,7 +111,7 @@ export class ApplicationsService {
           }
         ];
       }
-      
+
       const accessApp = await this.cloudflare.createAccessApp(appConfig);
       accessAppId = accessApp.result.id;
 
@@ -116,7 +121,7 @@ export class ApplicationsService {
           id: accessAppId || undefined,
           name: rest.name,
           logoUrl: rest.logoUrl ?? null,
-          publicUrl: rest.publicUrl ?? null,
+          publicUrl: JSON.stringify(rest.publicUrl || '[]'),
           destinationType: rest.destinationType,
           destinationUrl: rest.destinationUrl,
           exposureType: rest.exposureType,
@@ -129,7 +134,7 @@ export class ApplicationsService {
         id: app.id,
         name: app.name,
         logoUrl: app.logoUrl ?? undefined,
-        publicUrl: app.publicUrl ?? undefined,
+        publicUrl: JSON.parse(app.publicUrl || '[]'),
         destinationType: app.destinationType as Application['destinationType'],
         destinationUrl: app.destinationUrl,
         exposureType: app.exposureType as Application['exposureType'],
@@ -166,7 +171,7 @@ export class ApplicationsService {
       data: {
         name: rest.name,
         logoUrl: rest.logoUrl,
-        publicUrl: rest.publicUrl,
+        publicUrl: JSON.stringify(rest.publicUrl),
         destinationType: rest.destinationType,
         destinationUrl: rest.destinationUrl,
         exposureType: rest.exposureType,
@@ -177,7 +182,7 @@ export class ApplicationsService {
       id: app.id,
       name: app.name,
       logoUrl: app.logoUrl ?? undefined,
-      publicUrl: app.publicUrl ?? undefined,
+      publicUrl: JSON.parse(app.publicUrl || '[]'),
       destinationType: app.destinationType as Application['destinationType'],
       destinationUrl: app.destinationUrl,
       exposureType: app.exposureType as Application['exposureType'],
