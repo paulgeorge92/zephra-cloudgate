@@ -1,0 +1,1079 @@
+{
+  "FieldTypes": [
+    {
+      "ui_string": "DLP Profile",
+      "field_type": "dlp_profile"
+    },
+    {
+      "ui_string": "Source Port",
+      "field_type": "ip_port"
+    },
+    {
+      "ui_string": "Destination IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "Destination Port",
+      "field_type": "ip_port"
+    },
+    {
+      "ui_string": "Protocol",
+      "field_type": "protocol"
+    },
+    {
+      "ui_string": "Detected Protocol",
+      "field_type": "detected_protocol"
+    },
+    {
+      "ui_string": "Location",
+      "field_type": "location"
+    },
+    {
+      "ui_string": "Source IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "Source Internal IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "DOH Subdomain",
+      "field_type": "text"
+    },
+    {
+      "ui_string": "Resolved IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "DNS Resolver IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "Authoritative Nameserver IP",
+      "field_type": "ip_address"
+    },
+    {
+      "ui_string": "Query Record Type",
+      "field_type": "dns_rtype"
+    },
+    {
+      "ui_string": "Application",
+      "field_type": "app_type_id"
+    },
+    {
+      "ui_string": "Application (Host)",
+      "field_type": "app_type_id"
+    },
+    {
+      "ui_string": "Application (Support)",
+      "field_type": "app_type_id"
+    },
+    {
+      "ui_string": "Application Type (Host)",
+      "field_type": "app_type_id"
+    },
+    {
+      "ui_string": "Application Type (Support)",
+      "field_type": "app_type_id"
+    },
+    {
+      "ui_string": "Application Control Controls",
+      "field_type": "app_control"
+    },
+    {
+      "ui_string": "Application Control Operation Groups",
+      "field_type": "app_control"
+    },
+    {
+      "ui_string": "Application Control Operation",
+      "field_type": "app_control"
+    },
+    {
+      "ui_string": "Application Status",
+      "field_type": "app_status"
+    },
+    {
+      "ui_string": "User Name",
+      "field_type": "text"
+    },
+    {
+      "ui_string": "User Email",
+      "field_type": "email"
+    },
+    {
+      "ui_string": "User Group Names",
+      "field_type": "user_group_names"
+    },
+    {
+      "ui_string": "User Group Emails",
+      "field_type": "email"
+    },
+    {
+      "ui_string": "User Group IDs",
+      "field_type": "group_id"
+    },
+    {
+      "ui_string": "Host",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "Domain",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "URL",
+      "field_type": "uri"
+    },
+    {
+      "ui_string": "URL Path",
+      "field_type": "uri_path"
+    },
+    {
+      "ui_string": "URL Query",
+      "field_type": "uri_query"
+    },
+    {
+      "ui_string": "URL Path & Query",
+      "field_type": "uri_path_and_query"
+    },
+    {
+      "ui_string": "HTTP Method",
+      "field_type": "http_method"
+    },
+    {
+      "ui_string": "HTTP Response",
+      "field_type": "http_response"
+    },
+    {
+      "ui_string": "Upload File Name",
+      "field_type": "file_name"
+    },
+    {
+      "ui_string": "Upload File Size (MiB)",
+      "field_type": "file_size"
+    },
+    {
+      "ui_string": "Upload File Type",
+      "field_type": "file_type"
+    },
+    {
+      "ui_string": "Upload File Types",
+      "field_type": "file_type"
+    },
+    {
+      "ui_string": "Upload File Extension",
+      "field_type": "file_ext"
+    },
+    {
+      "ui_string": "Upload Mime Type",
+      "field_type": "mime_type"
+    },
+    {
+      "ui_string": "Download File Name",
+      "field_type": "file_name"
+    },
+    {
+      "ui_string": "Download File Size (MiB)",
+      "field_type": "file_size"
+    },
+    {
+      "ui_string": "Download File Type",
+      "field_type": "file_type"
+    },
+    {
+      "ui_string": "Download File Types",
+      "field_type": "file_type"
+    },
+    {
+      "ui_string": "Download File Extension",
+      "field_type": "file_ext"
+    },
+    {
+      "ui_string": "Download Mime Type",
+      "field_type": "mime_type"
+    },
+    {
+      "ui_string": "Content Categories",
+      "field_type": "content_category"
+    },
+    {
+      "ui_string": "Indicator Feeds",
+      "field_type": "indicator_feed"
+    },
+    {
+      "ui_string": "Security Categories",
+      "field_type": "security_category"
+    },
+    {
+      "ui_string": "DNS MX Response Value",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "DNS PTR Response Value",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "DNS TXT Response Value",
+      "field_type": "text"
+    },
+    {
+      "ui_string": "Request Context Categories",
+      "field_type": "bool",
+      "true_label": "Present",
+      "false_label": "Not Present"
+    },
+    {
+      "ui_string": "DNS CNAME Response Value",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "SAML Attributes",
+      "field_type": "saml_attributes"
+    },
+    {
+      "ui_string": "OIDC Claims",
+      "field_type": "oidc_claims"
+    },
+    {
+      "ui_string": "SNI",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "SNI Domain",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "Passed Device Posture Checks",
+      "field_type": "device_posture"
+    },
+    {
+      "ui_string": "Failed Device Posture Checks",
+      "field_type": "device_posture"
+    },
+    {
+      "ui_string": "Proxy Endpoint",
+      "field_type": "host"
+    },
+    {
+      "ui_string": "Virtual Network",
+      "field_type": "virtual_network_id"
+    },
+    {
+      "ui_string": "Destination Country IP Geolocation",
+      "field_type": "geo_ip_country"
+    },
+    {
+      "ui_string": "Source Country IP Geolocation",
+      "field_type": "geo_ip_country"
+    },
+    {
+      "ui_string": "Resolved Country IP Geolocation",
+      "field_type": "geo_ip_country"
+    },
+    {
+      "ui_string": "Destination Continent IP Geolocation",
+      "field_type": "geo_ip_continent"
+    },
+    {
+      "ui_string": "Source Continent IP Geolocation",
+      "field_type": "geo_ip_continent"
+    },
+    {
+      "ui_string": "Resolved Continent IP Geolocation",
+      "field_type": "geo_ip_continent"
+    },
+    {
+      "ui_string": "Access Private App",
+      "field_type": "access_aud"
+    },
+    {
+      "ui_string": "Self-hosted Access App with Private Address",
+      "field_type": "bool"
+    },
+    {
+      "ui_string": "Access Infrastructure Target",
+      "field_type": "bool"
+    },
+    {
+      "ui_string": "Body Phase",
+      "field_type": "body_phase"
+    }
+  ],
+  "Fields": [
+    {
+      "ui_string": "Source IP",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.src.ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Network Override", "Audit SSH", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source Internal IP",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.src.internal_src_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Network Override", "Audit SSH", "Egress", "Do Not Scan", "Do Not Inspect", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Destination IP",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.dst.ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Network Override", "Audit SSH", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source Port",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.src.port",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "<", ">", "<=", ">="],
+      "actions": ["Block", "Allow", "Network Override", "Audit SSH", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Destination Port",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.dst.port",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "<", ">", "<=", ">="],
+      "actions": ["Block", "Allow", "Network Override", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Protocol",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.protocol",
+      "splat": false,
+      "operators": ["==", "in", "!=", "not in"],
+      "actions": ["Block", "Allow", "Network Override", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false,
+      "values": ["TCP", "UDP"]
+    },
+    {
+      "ui_string": "Detected Protocol",
+      "filters": ["l4"],
+      "wf_string": "net.detected_protocol",
+      "splat": false,
+      "operators": ["==", "in", "!=", "not in"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false,
+      "values": ["HTTP", "HTTP2", "SSH", "TLS", "DCERPC", "MQTT", "TPKT", "IMAP", "POP3", "SMTP", "MYSQL", "LDPA", "NTP", "RSYNC-DAEMON"]
+    },
+    {
+      "ui_string": "Domain",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.domains",
+      "splat": true,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Host",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.fqdn",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source IP",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.src_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source Internal IP",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.src_internal_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "DOH Subdomain",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.doh_subdomain",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "DNS Resolver IP",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.resolver_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Resolved IP",
+      "filters": ["dns"],
+      "wf_string": "dns.resolved_ips",
+      "splat": true,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Content Categories",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.content_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Security Categories",
+      "filters": ["dns", "dns_resolver"],
+      "wf_string": "dns.security_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Safe Search", "YouTube Restricted", "Override", "Resolve"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "User Email",
+      "filters": ["dns", "dns_resolver", "http", "l4", "egress"],
+      "wf_string": "identity.email",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Do Not Inspect", "Block", "Allow", "Do Not Scan", "Isolate", "Do Not Isolate", "Safe Search", "YouTube Restricted", "Override", "Network Override", "Audit SSH", "Egress", "Resolve", "Quarantine", "Redirect"],
+      "condition_type": "identity",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Host",
+      "filters": ["http"],
+      "wf_string": "http.conn.hostname",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Do Not Inspect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Domain",
+      "filters": ["http"],
+      "wf_string": "http.conn.domains",
+      "splat": true,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Do Not Inspect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source IP",
+      "filters": ["http"],
+      "wf_string": "http.conn.src_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Do Not Scan", "Do Not Inspect", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Source Internal IP",
+      "filters": ["http"],
+      "wf_string": "http.conn.internal_src_ip",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Do Not Scan", "Do Not Inspect", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Destination IP",
+      "filters": ["http"],
+      "wf_string": "http.conn.dst_ip",
+      "splat": true,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list"],
+      "actions": ["Block", "Allow", "Do Not Scan", "Do Not Inspect", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Content Categories",
+      "filters": ["http"],
+      "wf_string": "http.conn.content_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Do Not Inspect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Security Categories",
+      "filters": ["http"],
+      "wf_string": "http.conn.security_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Do Not Inspect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Host",
+      "filters": ["http"],
+      "wf_string": "http.request.host",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Domain",
+      "filters": ["http"],
+      "wf_string": "http.request.domains",
+      "splat": true,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "URL",
+      "filters": ["http"],
+      "wf_string": "http.request.uri",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "in list", "not in list", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "URL Query",
+      "filters": ["http"],
+      "wf_string": "http.request.uri.query",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "URL Path",
+      "filters": ["http"],
+      "wf_string": "http.request.uri.path",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "URL Path & Query",
+      "filters": ["http"],
+      "wf_string": "http.request.uri.path_and_query",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "HTTP Method",
+      "filters": ["http"],
+      "wf_string": "http.request.method",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false,
+      "values": ["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS", "TRACE", "CONNECT"]
+    },
+    {
+      "ui_string": "HTTP Response",
+      "filters": ["http"],
+      "wf_string": "http.response.status_code",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Upload File Size (MiB)",
+      "filters": ["http"],
+      "wf_string": "http.upload.file.size",
+      "splat": false,
+      "operators": [">="],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Upload File Type",
+      "filters": ["http"],
+      "wf_string": "http.upload.file.type",
+      "splat": false,
+      "operators": ["in"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Upload File Types",
+      "filters": ["http"],
+      "wf_string": "http.upload.file.types",
+      "splat": true,
+      "operators": ["in"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Upload File Extension",
+      "filters": ["http"],
+      "wf_string": "http.upload.file.ext",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Do Not Scan"],
+      "condition_type": "",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Upload File Name",
+      "filters": ["http"],
+      "wf_string": "http.upload.file.name",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Do Not Scan"],
+      "condition_type": "",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Upload Mime Type",
+      "filters": ["http"],
+      "wf_string": "http.upload.mime",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Download File Name",
+      "filters": ["http"],
+      "wf_string": "http.download.file.name",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Do Not Scan"],
+      "condition_type": "",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Download File Size (MiB)",
+      "filters": ["http"],
+      "wf_string": "http.download.file.size",
+      "splat": false,
+      "operators": [">="],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Download File Type",
+      "filters": ["http"],
+      "wf_string": "http.download.file.type",
+      "splat": false,
+      "operators": ["in"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Download File Types",
+      "filters": ["http"],
+      "wf_string": "http.download.file.types",
+      "splat": true,
+      "operators": ["in"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Download File Extension",
+      "filters": ["http"],
+      "wf_string": "http.download.file.ext",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow", "Do Not Scan"],
+      "condition_type": "",
+      "deprecated": true
+    },
+    {
+      "ui_string": "Download Mime Type",
+      "filters": ["http"],
+      "wf_string": "http.download.mime",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in", "matches", "does not match"],
+      "actions": ["Block", "Allow"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Content Categories",
+      "filters": ["http"],
+      "wf_string": "http.request.uri.content_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Security Categories",
+      "filters": ["http"],
+      "wf_string": "http.request.uri.security_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Isolate", "Do Not Isolate", "Do Not Scan", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Application",
+      "filters": ["dns", "l4", "egress"],
+      "wf_string": "app.ids",
+      "wf_string_neg": "app.type.ids",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Do Not Inspect", "Block", "Allow", "Do Not Scan", "Isolate", "Do Not Isolate", "Safe Search", "YouTube Restricted", "Override", "Audit SSH", "Egress", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Virtual Network",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.vnet_id",
+      "splat": false,
+      "operators": ["==", "!="],
+      "actions": ["Block", "Allow", "Network Override", "Audit SSH", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Content Categories",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.fqdn.content_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Security Categories",
+      "filters": ["l4", "egress"],
+      "wf_string": "net.fqdn.security_category",
+      "splat": true,
+      "operators": ["in", "not in"],
+      "actions": ["Block", "Allow", "Egress"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Virtual Network",
+      "filters": ["http"],
+      "wf_string": "http.conn.vnet_id",
+      "splat": false,
+      "operators": ["==", "!="],
+      "actions": ["Block", "Allow", "Do Not Scan", "Do Not Inspect", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false
+    },
+    {
+      "ui_string": "Access Private App",
+      "filters": ["http", "l4"],
+      "wf_string": "access.private_app.aud",
+      "splat": false,
+      "operators": ["==", "!=", "in", "not in"],
+      "actions": ["Do Not Inspect", "Block", "Allow", "Do Not Scan", "Isolate", "Do Not Isolate", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": true,
+      "gateKey": "unified-access-application-definition"
+    },
+    {
+      "ui_string": "Self-hosted Access App with Private Address",
+      "filters": ["http", "l4"],
+      "wf_string": "access.private_app",
+      "splat": false,
+      "operators": ["=="],
+      "actions": ["Do Not Inspect", "Block", "Allow", "Do Not Scan", "Isolate", "Do Not Isolate", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false,
+      "gateKey": "unified-access-application-definition",
+      "values": ["Present", "Not Present"]
+    },
+    {
+      "ui_string": "Access Infrastructure Target",
+      "filters": ["http", "l4"],
+      "wf_string": "access.target",
+      "splat": false,
+      "operators": ["=="],
+      "actions": ["Do Not Inspect", "Block", "Allow", "Do Not Scan", "Isolate", "Do Not Isolate", "Quarantine", "Redirect"],
+      "condition_type": "traffic",
+      "deprecated": false,
+      "gateKey": "unified-access-application-definition"
+    }
+  ],
+  "Actions": [
+    {
+      "ui_string": "YouTube Restricted",
+      "wf_string": "ytrestricted",
+      "deprecated": false,
+      "color": "text-amber-400 bg-amber-500/10 border-amber-500/30",
+      "filters": ["dns"]
+    },
+    {
+      "ui_string": "Safe Search",
+      "wf_string": "safesearch",
+      "deprecated": false,
+      "color": "text-sky-400 bg-sky-500/10 border-sky-500/30",
+      "filters": ["dns"]
+    },
+    {
+      "ui_string": "Allow",
+      "wf_string": "allow",
+      "deprecated": false,
+      "color": "text-green-400 bg-green-500/10 border-green-500/30"
+    },
+    {
+      "ui_string": "Block",
+      "wf_string": "block",
+      "deprecated": false,
+      "color": "text-red-400 bg-red-500/10 border-red-500/30"
+    },
+    {
+      "ui_string": "Do Not Scan",
+      "wf_string": "noscan",
+      "deprecated": false,
+      "color": "text-cyan-400 bg-cyan-500/10 border-cyan-500/30",
+      "filters": ["http"]
+    },
+    {
+      "ui_string": "Do Not Inspect",
+      "wf_string": "off",
+      "deprecated": false,
+      "color": "text-slate-300 bg-slate-500/10 border-slate-500/30",
+      "filters": ["http"]
+    },
+    {
+      "ui_string": "Isolate",
+      "wf_string": "isolate",
+      "deprecated": false,
+      "color": "text-pink-400 bg-pink-500/10 border-pink-500/30",
+      "filters": ["http"]
+    },
+    {
+      "ui_string": "Do Not Isolate",
+      "wf_string": "noisolate",
+      "deprecated": false,
+      "color": "text-violet-400 bg-violet-500/10 border-violet-500/30",
+      "filters": ["http"]
+    },
+    {
+      "ui_string": "Override",
+      "wf_string": "override",
+      "deprecated": false,
+      "color": "text-yellow-400 bg-yellow-500/10 border-yellow-500/30",
+      "filters": ["dns"]
+    },
+    {
+      "ui_string": "Network Override",
+      "wf_string": "l4_override",
+      "deprecated": false,
+      "color": "text-orange-400 bg-orange-500/10 border-orange-500/30",
+      "filters": ["l4"]
+    },
+    {
+      "ui_string": "Audit SSH",
+      "wf_string": "audit_ssh",
+      "deprecated": true,
+      "color": "text-yellow-400 bg-yellow-500/10 border-yellow-500/30",
+      "filters": ["l4"]
+    },
+    {
+      "ui_string": "Egress",
+      "wf_string": "egress",
+      "deprecated": false,
+      "color": "text-indigo-400 bg-indigo-500/10 border-indigo-500/30",
+      "filters": ["egress"]
+    },
+    {
+      "ui_string": "Resolve",
+      "wf_string": "resolve",
+      "deprecated": false,
+      "color": "text-teal-400 bg-teal-500/10 border-teal-500/30",
+      "filters": ["dns_resolver"]
+    },
+    {
+      "ui_string": "Quarantine",
+      "wf_string": "quarantine",
+      "deprecated": false,
+      "color": "text-amber-400 bg-amber-500/10 border-amber-500/30",
+      "filters": ["http"]
+    },
+    {
+      "ui_string": "Redirect",
+      "wf_string": "redirect",
+      "deprecated": false,
+      "color": "text-purple-400 bg-purple-500/10 border-purple-500/30",
+      "filters": ["http"]
+    }
+  ],
+  "Operators": [
+    {
+      "ui_string": "==",
+      "wf_string": "==",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "<=",
+      "wf_string": "<=",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Egress", "Network Override"],
+      "deprecated": false
+    },
+    {
+      "ui_string": ">=",
+      "wf_string": ">=",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Egress", "Network Override"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "<",
+      "wf_string": "<",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Egress", "Network Override"],
+      "deprecated": false
+    },
+    {
+      "ui_string": ">",
+      "wf_string": ">",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Egress", "Network Override"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "in",
+      "wf_string": "in",
+      "neg": false,
+      "rhs_set": true,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "matches",
+      "wf_string": "matches",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": true,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "!=",
+      "wf_string": "==",
+      "neg": true,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "not in",
+      "wf_string": "in",
+      "neg": true,
+      "rhs_set": true,
+      "rhs_list": false,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "does not match",
+      "wf_string": "matches",
+      "neg": true,
+      "rhs_set": false,
+      "rhs_list": false,
+      "rhs_regex": true,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "in list",
+      "wf_string": "in",
+      "neg": false,
+      "rhs_set": false,
+      "rhs_list": true,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    },
+    {
+      "ui_string": "not in list",
+      "wf_string": "in",
+      "neg": true,
+      "rhs_set": false,
+      "rhs_list": true,
+      "rhs_regex": false,
+      "actions": ["Allow", "Audit SSH", "Block", "Do Not Inspect", "Do Not Isolate", "Do Not Scan", "Egress", "Isolate", "Network Override", "Override", "Quarantine", "Redirect", "Resolve", "Safe Search", "YouTube Restricted"],
+      "deprecated": false
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": true,
+    "javascript.format.insertSpaceBeforeFunctionParenthesis": true,
+    "javascript.preferGoToSourceDefinition": false,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+    "powershell.codeFormatting.whitespaceBetweenParameters": true,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces": true,
+    "chat.tools.terminal.autoApprove": {
+        "npx tsc": true
+    }
+}

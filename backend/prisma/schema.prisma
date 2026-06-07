@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  name         String
+  role         String   // "ADMIN", "MEMBER", "GUEST"
+  password     String?  // Hashed password for local login (admin)
+  cloudflareId String?  // ID in Cloudflare account members
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Application {
+  id              String   @id @default(uuid())
+  name            String
+  logoUrl         String?
+  publicUrl       String?
+  destinationType String   // "URI", "IP"
+  destinationUrl  String   // e.g., "http://localhost:8080"
+  exposureType    String   // "PUBLIC", "PUBLIC_WITH_ACCESS", "WARP"
+  tunnelId        String?  // Cloudflare Tunnel UUID (stored as plain string)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  dnsRecordId     String?  // Cloudflare DNS Record UUID (stored as plain string)
+}
+
+model Configuration {
+  id        String @id @default(uuid())
+  name      String
+  value     String
+}
