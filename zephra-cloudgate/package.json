@@ -1,12 +1,13 @@
 {
   "name": "zephra-cloudgate",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "node scripts/dev-watch.js",
     "build": "npm run prisma:generate && next build && tsc -p tsconfig.server.json",
     "start": "node dist-server/server/index.js",
     "db:init": "node scripts/init-sqlite.js",
+    "release": "node scripts/create-release.js",
     "prisma:generate": "prisma generate --schema prisma/schema.prisma",
     "prisma:push": "prisma db push --schema prisma/schema.prisma",
     "lint": "eslint"

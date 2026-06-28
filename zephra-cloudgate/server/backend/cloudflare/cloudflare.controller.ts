@@ -3,7 +3,7 @@ import { CloudflareService } from './cloudflare.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { PrismaService } from '../prisma.service';
 import { RequestResponse } from '../shared/types';
-import { CloudflareAccessApplication } from './cloudflare.types';
+import { CloudflareAccessApplication, CloudflareDNSLog, CloudflareHTTPLog, CloudflareNetworkLog } from './cloudflare.types';
 
 @UseGuards(JwtAuthGuard)
 @Controller('cloudflare')
@@ -77,6 +77,12 @@ export class CloudflareController {
   async getAccountMembers(@Query('page') page?: number, @Query('per_page') per_page?: number): Promise<RequestResponse<any>> {
     const result = await this.cloudflare.getAccountMembers(page, per_page);
     return { ...result, success: result.success };
+  }
+
+  @Get('logs')
+  async get24HrLogs():Promise<RequestResponse<{ dns: CloudflareDNSLog[]; l4: CloudflareNetworkLog[]; http: CloudflareHTTPLog[] }>>{
+    const result = await this.cloudflare.get24HrLogs();
+    return {...result, success: result.success}
   }
 
   @Post('accounts/members')

@@ -17,6 +17,7 @@ import { DomainsModule } from './domains/domains.module';
 import { DnsModule } from './dns/dns.module';
 import { FirewallModule } from './firewall/firewall.module';
 import { LogsModule } from './logs/logs.module';
+import { CronModule } from './cron/cron.module';
 
 @Module({
   imports: [
@@ -39,6 +40,7 @@ import { LogsModule } from './logs/logs.module';
     DnsModule,
     FirewallModule,
     LogsModule,
+    CronModule,
   ],
   controllers: [AppController],
   providers: [AppService],

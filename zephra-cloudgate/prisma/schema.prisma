@@ -36,3 +36,179 @@ model Configuration {
   name      String
   value     String
 }
+
+model CloudflareDNSLog {
+  id                          String   @id @default(uuid())
+  query                       String
+  query_type                  String
+  policy_uuid                 String
+  location_uuid               String
+  source_ip                   String
+  destination_ip              String
+  destination_port            Int
+  protocol                    String
+  datetime                    DateTime
+  decision                    String
+  blocked                     Boolean
+  overridden                  Boolean
+  query_category_ids          Json
+  initial_category_ids        Json
+  cname_category_ids          Json?
+  rdata                       Json
+  email                       String
+  user_id                     String
+  device_id                   String
+  dnssec_validation_disabled  Boolean
+  ede_errors                  Json
+  src_country                 String
+  tenant_configuration_account_id String
+  host_application_id         Int?
+  rcode                       Int
+  time_zone_inferred_method   String
+  custom_resolver_address     String
+  custom_resolver_response    String
+  custom_resolver_time_in_ms  Int
+  custom_resolver_rule_uuid   String
+  is_response_cached          Boolean
+  colo_id                     Int
+  metal_id                    Int
+  resolved_ips                Json
+  authoritative_nameserver_ips Json
+  doh_subdomain               String
+  dot_subdomain               String?
+  resolved_country_codes      Json
+  resolved_continent_codes    Json
+  src_country_code            String
+  src_continent_code          String
+  cnames                      Json
+  query_id                    String   @unique
+  resolver_rule_id            String?
+  internal_dns_rcode          Int
+  internal_dns_time_in_ms     Int
+  redirect_target_uri         String
+  registration_id             String
+  query_application_ids       Json?
+  matched_tunnel_type         Int
+  response_time_ms            Int
+}
+
+model CloudflareNetworkLog {
+  id                 String   @id @default(uuid())
+  session_id         String   @unique
+  datetime           DateTime
+  account_id         String
+  user_id            String
+  device_id          String
+  virtual_network_id String
+  rule_id            String
+  action             Int
+  action_name        String
+  source_ip          String
+  source_internal_ip String
+  source_port        Int
+  destination_ip     String
+  destination_port   Int
+  override_ip        String
+  override_port      Int
+  transport          String
+  email              String
+  sni                String
+  last_authenticated_at DateTime
+  src_country        String
+  dst_country        String
+  src_continent      String
+  dst_continent      String
+  proxy_endpoint     String
+  detected_protocol  String
+  access_app_auds    Json
+  colo_id           Int
+  metal_id          Int
+  application_ids    Json
+  category_ids       Json
+  redirect_target_uri String
+  registration_id    String
+}
+
+model CloudflareHTTPLog {
+  id                                 String   @id @default(uuid())
+  session_id                         String
+  datetime                           DateTime
+  request_id                         String   @unique
+  account_id                         String
+  user_id                            String
+  email                              String
+  device_id                          String
+  rule_id                            String
+  action                             Int
+  action_name                        String
+  is_isolated                        Boolean
+  http_host                          String
+  http_method                        Int
+  http_method_name                   String
+  http_version                       Int
+  http_version_name                  String
+  http_status_code                   Int
+  url                                String
+  referer                            String
+  user_agent                         String
+  source_ip                          String
+  source_internal_ip                 String
+  source_port                        Int
+  destination_ip                     String
+  destination_port                   Int
+  uploaded_file_names                Json
+  downloaded_file_names              Json
+  upload_matched_dlp_profiles        Json
+  download_matched_dlp_profiles      Json
+  upload_matched_dlp_profileEntries  Json
+  download_matched_dlp_profileEntries Json
+  dlp_match_context                  String
+  dlp_match_context_parsed           String?
+  file_info                          Json
+  blocked_file_name                  String
+  blocked_file_type                  String
+  blocked_file_hash                  String
+  blocked_file_size                  Int
+  blocked_file_reason                Int
+  added_headers                      Json
+  last_authenticated_at              DateTime
+  request_antivirus_scanned          Boolean
+  response_antivirus_scanned         Boolean
+  quarantined                        Boolean
+  src_country                        String
+  dst_country                        String
+  src_continent                      String
+  dst_continent                      String
+  proxy_endpoint                     String
+  untrusted_cert_action              String
+  access_app_aud                     String
+  colo_id                            Int
+  metal_id                           Int
+  application_ids                    Json
+  application_type_ids               Json
+  category_ids                       Json
+  virtual_network_id                 String
+  forensic_copy_status               String
+  redirect_target_uri                String
+  registration_id                    String
+  gen_ai_prompt_request              String
+  gen_ai_prompt_response             String
+  gen_ai_conversation                String
+  application_statuses               Json
+  app_control_info                   Json
+  upload_matched_dlp_data_classes    Json
+  download_matched_dlp_data_classes  Json
+  upload_matched_dlp_data_tags       Json
+  download_matched_dlp_data_tags     Json
+  upload_matched_dlp_sensitivity_levels Json
+  download_matched_dlp_sensitivity_levels Json
+}
+
+model LogImportHistory {
+  id            String   @id @default(uuid())
+  job_name      String
+  started_at    DateTime
+  completed_at  DateTime?
+  status        String
+  message       String?
+}
